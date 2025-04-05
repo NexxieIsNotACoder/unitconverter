@@ -1,0 +1,96 @@
+import { Button, VerticalBox, LineEdit, TabWidget } from "std-widgets.slint";
+export component AppWindow inherits Window {
+    in-out property <string> results:"";
+    callback convertToF(string);
+    callback convertToKMH(string);
+    title: "Nexi's Very Cool Unit Converter";
+    icon: @image-url("kronii.png");
+    TabWidget {
+        Tab {
+            title: "Farenheit to Celcius";
+            GridLayout {
+                spacing: 20px;
+                padding: 30px;
+                Row {
+                    Text {
+                        text: "Enter Farenheit";
+                        horizontal-alignment: center;
+                        font-size: 40px;    
+                    }
+                }
+                Row {
+                    tempF := LineEdit {
+                        horizontal-alignment: center;
+                        placeholder-text: "Enter temperature here";
+                        font-size: 16px;
+                    }    
+                }
+                Row {
+                    Button {
+                        text: "Convert to Celcius";
+                        primary: true;
+                        clicked => {convertToF(tempF.text)}
+                    }
+                }
+                Row {
+                    VerticalBox {
+                        Rectangle {
+                            height: 180px;
+                            background: white;
+                            border-width: 2px;
+                            border-color: gray;
+                            Text {
+                                color: black;
+                                font-size: 30px;
+                                text: root.results;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        Tab {
+            title: "Miles to Kilometers";
+            GridLayout {
+                spacing: 20px;
+                padding: 30px;
+                Row {
+                    Text {
+                        text: "Enter Miles";
+                        horizontal-alignment: center;
+                        font-size: 40px;    
+                    }
+                }
+                Row {
+                    miles :=LineEdit {
+                        horizontal-alignment: center;
+                        placeholder-text: "Enter miles here";
+                        font-size: 16px;
+                    }    
+                }
+                Row {
+                    Button {
+                        text: "Convert to Kilometers";
+                        primary: true;
+                        clicked => {convertToKMH(miles.text)}
+                    }                }
+                Row {
+                    VerticalBox {
+                        Rectangle {
+                            height: 180px;
+                            background: white;
+                            border-width: 2px;
+                            border-color: gray;
+                            Text {
+                                color: black;
+                                font-size: 30px;
+                                text: root.results;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+        }
+    }
