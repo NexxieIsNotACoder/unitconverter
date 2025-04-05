@@ -1,15 +1,22 @@
 // Prevent console window in addition to Slint window in Windows release builds when, e.g., starting the app via file manager. Ignored on other platforms.
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
-
 use std::{error::Error, result};
 slint::include_modules!();
+
+//check if string is either empty or doesn't have numbers
+fn stringchecker(string: String) -> bool{
+    if string.is_empty() == true || string.chars().all(char::is_numeric) == false {
+        return false;
+    }
+    return true;
+}
 fn main() -> Result<(), Box<dyn Error>> {
     let ui = AppWindow::new()?;
     ui.on_convertToF({
         let ui_handle = ui.as_weak();
         move |string| {
             let ui = ui_handle.unwrap();
-            if string.is_empty() == true {
+            if stringchecker(string.to_string()) == false {
                 let result = format!("Please input a valid number!");
                 ui.set_results(result.into());
             }
@@ -26,7 +33,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         let ui_handle = ui.as_weak();
         move |string| {
             let ui = ui_handle.unwrap();
-            if string.is_empty() == true {
+            if stringchecker(string.to_string()) == false  {
                 let result = format!("Please input a valid number!");
                 ui.set_results(result.into());
             }
