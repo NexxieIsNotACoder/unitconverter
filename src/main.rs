@@ -30,16 +30,18 @@ fn main() -> Result<(), Box<dyn Error>> {
                 let result = format!("Please input a valid number!");
                 ui.set_results(result.into());
             }
-            let num: f64 = string.trim().parse().unwrap();
-            if num < 0.0 {
-                let result = format!("Please input a valid number!");
-                ui.set_results(result.into());
-            }
-            // convert num (miles) to km
-            else {
-                let km: f64 = num*1.609347218694;
-                let result = format!("{:.2} Kilometers", {km});
-                ui.set_results(result.into());
+            else{
+                let num: f64 = string.trim().parse().unwrap();
+                if num < 0.0 {
+                    let result = format!("Please input a valid number!");
+                    ui.set_results(result.into());
+                }
+                // convert num (miles) to km
+                else {
+                    let km: f64 = num*1.609347218694;
+                    let result = format!("{:.2} Kilometers", {km});
+                    ui.set_results(result.into());
+                }
             }
         }
     });
