@@ -11,6 +11,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         move |string| {
             let ui = ui_handle.unwrap();
             let num: f64 = string.trim().parse().unwrap();
+            // convert num to celcius
             let celcius: f64 = ((num-32.0)*5.0)/9.0;
             let result = format!("{:.2}°C", {celcius});
             ui.set_results(result.into());
@@ -21,6 +22,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         move |string| {
             let ui = ui_handle.unwrap();
             let num: f64 = string.trim().parse().unwrap();
+            // convert num (miles) to km
             let km: f64 = num*1.609347218694;
             let result = format!("{:.2} Kilometers", {km});
             ui.set_results(result.into());
