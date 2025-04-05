@@ -7,13 +7,13 @@ export component AppWindow inherits Window {
     icon: @image-url("kronii.png");
     TabWidget {
         Tab {
-            title: "Farenheit to Celcius";
+            title: "Fahrenheit to Celsius";
             GridLayout {
                 spacing: 20px;
                 padding: 30px;
                 Row {
                     Text {
-                        text: "Enter Farenheit";
+                        text: "Enter Fahrenheit ";
                         horizontal-alignment: center;
                         font-size: 40px;    
                     }
@@ -27,7 +27,7 @@ export component AppWindow inherits Window {
                 }
                 Row {
                     Button {
-                        text: "Convert to Celcius";
+                        text: "Convert to Celsius";
                         primary: true;
                         clicked => {convertToF(tempF.text)}
                     }
