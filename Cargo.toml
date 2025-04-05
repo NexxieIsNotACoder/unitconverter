@@ -13,7 +13,7 @@ slint = "1.8.0"
 slint-build = "1.8.0"
 
 [package.metadata.bundle]
-name = "Income Divider"
+name = "ImperialtoMetric"
 identifier = "io.github.NexxieIsNotACoder.imperialtometric"
 description = "Convert Imperial to Metric for your non-American friends."
 icon = ["./ui/kronii.png"]
