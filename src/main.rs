@@ -5,9 +5,25 @@ slint::include_modules!();
 
 //check if string is either empty or doesn't have numbers
 fn stringchecker(string: String) -> bool{
-    if string.is_empty() == true || string.chars().all(char::is_numeric) == false {
+    if string.is_empty() == true { 
         return false;
     }
+    for (index, x) in string.char_indices() {
+        // if input string contains a decimal
+        if x == '.' {
+            // check if the input string has numbers
+            if string.len() > 1{
+                break; 
+            }
+            else {
+                return false;
+            }
+}
+        if x.is_numeric() == false{
+            return false;
+        }
+    }
+
     return true;
 }
 fn main() -> Result<(), Box<dyn Error>> {
@@ -40,7 +56,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             else{
                 let num: f64 = string.trim().parse().unwrap();
                 if num < 0.0 {
-                    let result = format!("Please input a valid number!");
+                    let result = format!("Please input a positive number!");
                     ui.set_results(result.into());
                 }
                 // convert num (miles) to km
