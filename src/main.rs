@@ -8,7 +8,7 @@ fn stringchecker(string: String) -> bool{
     if string.is_empty() == true { 
         return false;
     }
-    for (index, x) in string.char_indices() {
+    for (x) in string.char_indices() {
         // if input string contains a decimal
         if x == '.' {
             // check if the input string has numbers
