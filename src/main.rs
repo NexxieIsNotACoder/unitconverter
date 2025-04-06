@@ -2,13 +2,14 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 use std::{error::Error, result};
 slint::include_modules!();
+const MITOKFACTOR: f64 = 1.609347218694;
 
 //check if string is either empty or doesn't have numbers
 fn stringchecker(string: String) -> bool{
-    if string.is_empty() == true { 
+    if string.is_empty() { 
         return false;
     }
-    for (x) in string.chars() {
+    for x in string.chars() {
         // if input string contains a decimal
         if x == '.' {
             // check if the input string has numbers
@@ -19,7 +20,7 @@ fn stringchecker(string: String) -> bool{
                 return false;
             }
 }
-        if x.is_numeric() == false{
+        if !x.is_numeric() {
             return false;
         }
     }
@@ -61,7 +62,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 }
                 // convert num (miles) to km
                 else {
-                    let km: f64 = num*1.609347218694;
+                    let km: f64 = num*MITOKFACTOR;
                     let result = format!("{:.2} Kilometers", {km});
                     ui.set_results(result.into());
                 }
