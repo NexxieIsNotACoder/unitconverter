@@ -1,8 +1,13 @@
 import { Button, VerticalBox, LineEdit, TabWidget } from "std-widgets.slint";
+
 export component AppWindow inherits Window {
     in-out property <string> results:"";
     callback convertToF(string);
     callback convertToKMH(string);
+    callback convertToGrams(string);
+    callback convertToKGs(string);
+    callback convertToL(string);
+
     title: "Nexi's Very Cool Unit Converter";
     icon: @image-url("kronii.png");
     TabWidget {
@@ -62,7 +67,7 @@ export component AppWindow inherits Window {
                     }
                 }
                 Row {
-                    miles :=LineEdit {
+                    miles := LineEdit {
                         horizontal-alignment: center;
                         placeholder-text: "Enter miles here";
                         font-size: 16px;
@@ -73,7 +78,8 @@ export component AppWindow inherits Window {
                         text: "Convert to Kilometers";
                         primary: true;
                         clicked => {convertToKMH(miles.text)}
-                    }                }
+                    }
+                }
                 Row {
                     VerticalBox {
                         Rectangle {
@@ -88,9 +94,138 @@ export component AppWindow inherits Window {
                             }
                         }
                     }
-
                 }
             }
         }
+        Tab {
+            title: "Ounces to Grams";
+            GridLayout {
+                spacing: 20px;
+                padding: 30px;
+                Row {
+                    Text {
+                        text: "Enter Ounces";
+                        horizontal-alignment: center;
+                        font-size: 40px;    
+                    }
+                }
+                Row {
+                    ounces := LineEdit {
+                        horizontal-alignment: center;
+                        placeholder-text: "Enter ounces here";
+                        font-size: 16px;
+                    }    
+                }
+                Row {
+                    Button {
+                        text: "Convert to Grams";
+                        primary: true;
+                        clicked => {convertToGrams(ounces.text)}
+                    }
+                }
+                Row {
+                    VerticalBox {
+                        Rectangle {
+                            height: 180px;
+                            background: white;
+                            border-width: 2px;
+                            border-color: gray;
+                            Text {
+                                color: black;
+                                font-size: 30px;
+                                text: root.results;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        Tab {
+            title: "Pounds to Kilograms";
+            GridLayout {
+                spacing: 20px;
+                padding: 30px;
+                Row {
+                    Text {
+                        text: "Enter Pounds";
+                        horizontal-alignment: center;
+                        font-size: 40px;    
+                    }
+                }
+                Row {
+                    lbs := LineEdit {
+                        horizontal-alignment: center;
+                        placeholder-text: "Enter lbs here";
+                        font-size: 16px;
+                    }    
+                }
+                Row {
+                    Button {
+                        text: "Convert to Kilograms";
+                        primary: true;
+                        clicked => {convertToKGs(lbs.text)}
+                    }
+                }
+                Row {
+                    VerticalBox {
+                        Rectangle {
+                            height: 180px;
+                            background: white;
+                            border-width: 2px;
+                            border-color: gray;
+                            Text {
+                                color: black;
+                                font-size: 30px;
+                                text: root.results;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        Tab {
+            title: "Gallons to Liters";
+            GridLayout {
+                spacing: 20px;
+                padding: 30px;
+                Row {
+                    Text {
+                        text: "Enter Gallons";
+                        horizontal-alignment: center;
+                        font-size: 40px;    
+                    }
+                }
+                Row {
+                    gallons := LineEdit {
+                        horizontal-alignment: center;
+                        placeholder-text: "Enter gallons here";
+                        font-size: 16px;
+                    }    
+                }
+                Row {
+                    Button {
+                        text: "Convert to Liters";
+                        primary: true;
+                        clicked => {convertToL(gallons.text)}
+                    }
+                }
+                Row {
+                    VerticalBox {
+                        Rectangle {
+                            height: 180px;
+                            background: white;
+                            border-width: 2px;
+                            border-color: gray;
+                            Text {
+                                color: black;
+                                font-size: 30px;
+                                text: root.results;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
+}
+
